@@ -18,5 +18,8 @@ CKEDITOR.editorConfig = function( config ) {
 
     config.filebrowserWindowWidth = '1000';
     config.filebrowserWindowHeight = '2000';
-    
+
+
+    config.extraPlugins = ['tableresizerowandcolumn','imageresizerowandcolumn', 'imageresize'];
+
 };
