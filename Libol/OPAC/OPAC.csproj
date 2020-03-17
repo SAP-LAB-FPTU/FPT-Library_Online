@@ -4206,9 +4206,14 @@
     <None Include="Properties\PublishProfiles\opac10 - Web Deploy.pubxml" />
     <Content Include="Scripts\ckeditor\CHANGES.md" />
     <Content Include="Scripts\ckeditor\LICENSE.md" />
+    <Content Include="Scripts\ckeditor\plugins\imageresizerowandcolumn\plugin.js" />
+    <Content Include="Scripts\ckeditor\plugins\imageresize\plugin.js" />
     <Content Include="Scripts\ckeditor\plugins\scayt\CHANGELOG.md" />
     <Content Include="Scripts\ckeditor\plugins\scayt\LICENSE.md" />
     <Content Include="Scripts\ckeditor\plugins\scayt\README.md" />
+    <Content Include="Scripts\ckeditor\plugins\tableresizerowandcolumn\dev\tableresize.html" />
+    <Content Include="Scripts\ckeditor\plugins\tableresizerowandcolumn\plugin.js" />
+    <Content Include="Scripts\ckeditor\plugins\tableresizerowandcolumn\samples\tableresize.html" />
     <Content Include="Scripts\ckeditor\plugins\wsc\LICENSE.md" />
     <Content Include="Scripts\ckeditor\plugins\wsc\README.md" />
     <Content Include="Scripts\ckeditor\README.md" />
@@ -4225,6 +4230,17 @@
     <Content Include="Scripts\ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Scripts\ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Scripts\ckfinder\userfiles\.htaccess" />
+    <Content Include="Scripts\ckeditor\plugins\tableresizerowandcolumn\.svn\all-wcprops" />
+    <Content Include="Scripts\ckeditor\plugins\tableresizerowandcolumn\.svn\entries" />
+    <Content Include="Scripts\ckeditor\plugins\tableresizerowandcolumn\.svn\text-base\plugin.js.svn-base" />
+    <Content Include="Scripts\ckeditor\plugins\tableresizerowandcolumn\dev\.svn\all-wcprops" />
+    <Content Include="Scripts\ckeditor\plugins\tableresizerowandcolumn\dev\.svn\entries" />
+    <Content Include="Scripts\ckeditor\plugins\tableresizerowandcolumn\dev\.svn\text-base\tableresize.html.svn-base" />
+    <Content Include="Scripts\ckeditor\plugins\tableresizerowandcolumn\samples\.svn\all-wcprops" />
+    <Content Include="Scripts\ckeditor\plugins\tableresizerowandcolumn\samples\.svn\entries" />
+    <Content Include="Scripts\ckeditor\plugins\tableresizerowandcolumn\samples\.svn\text-base\tableresize.html.svn-base" />
+    <Content Include="Scripts\ckeditor\plugins\imageresize\LICENSE.md" />
+    <Content Include="Scripts\ckeditor\plugins\imageresize\README.md" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\ckeditor\adapters\jquery.js" />
     <Content Include="Scripts\ckeditor\build-config.js" />
@@ -5404,6 +5420,21 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Images\" />
+    <Folder Include="Scripts\ckeditor\plugins\tableresizerowandcolumn\.svn\prop-base\" />
+    <Folder Include="Scripts\ckeditor\plugins\tableresizerowandcolumn\.svn\props\" />
+    <Folder Include="Scripts\ckeditor\plugins\tableresizerowandcolumn\.svn\tmp\prop-base\" />
+    <Folder Include="Scripts\ckeditor\plugins\tableresizerowandcolumn\.svn\tmp\props\" />
+    <Folder Include="Scripts\ckeditor\plugins\tableresizerowandcolumn\.svn\tmp\text-base\" />
+    <Folder Include="Scripts\ckeditor\plugins\tableresizerowandcolumn\dev\.svn\prop-base\" />
+    <Folder Include="Scripts\ckeditor\plugins\tableresizerowandcolumn\dev\.svn\props\" />
+    <Folder Include="Scripts\ckeditor\plugins\tableresizerowandcolumn\dev\.svn\tmp\prop-base\" />
+    <Folder Include="Scripts\ckeditor\plugins\tableresizerowandcolumn\dev\.svn\tmp\props\" />
+    <Folder Include="Scripts\ckeditor\plugins\tableresizerowandcolumn\dev\.svn\tmp\text-base\" />
+    <Folder Include="Scripts\ckeditor\plugins\tableresizerowandcolumn\samples\.svn\prop-base\" />
+    <Folder Include="Scripts\ckeditor\plugins\tableresizerowandcolumn\samples\.svn\props\" />
+    <Folder Include="Scripts\ckeditor\plugins\tableresizerowandcolumn\samples\.svn\tmp\prop-base\" />
+    <Folder Include="Scripts\ckeditor\plugins\tableresizerowandcolumn\samples\.svn\tmp\props\" />
+    <Folder Include="Scripts\ckeditor\plugins\tableresizerowandcolumn\samples\.svn\tmp\text-base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
