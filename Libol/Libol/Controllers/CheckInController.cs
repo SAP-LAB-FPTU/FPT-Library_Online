@@ -344,6 +344,21 @@ namespace Libol.Controllers
 				new object[] { PatronCode }).ToList();
 			return list;
 		}
+
+
+
+		//thay đổi ghi chú của ấn phẩm đang mượn
+		[HttpPost]
+		public JsonResult ChangeNote(string strCopyNumber, string strNote, string strDueDate)
+		{
+			strDueDate = strDueDate.Trim();
+			int lngTransactionID = db.CIR_LOAN.Where(a => a.CopyNumber == strCopyNumber).First().ID;
+			int update = db.SP_UPDATE_CURRENT_LOAN(lngTransactionID, strNote, strDueDate);
+			return Json(new
+			{
+				status = update
+			});
+		}
 	}
 	public class OnLoan
 	{
