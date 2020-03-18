@@ -99,6 +99,27 @@
 
             });
         }
+
+        function editNoteCheckIn() {
+            var noteValue = $("#editNote").val();
+            var note = $("#editNote");
+            var copyNumber = note.data("id");
+            var dueDate = note.data("duedate");
+            $.ajax({
+                url: "/CheckIn/ChangeNote",
+                data: JSON.stringify({ strCopyNumber: copyNumber, strNote: noteValue, strDueDate: dueDate }),
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json;charset=utf-8",
+                 success: function (res) {
+                     if (res.status) {
+                         alert("success")
+                        } else {
+                            alert("success")
+                        }
+                    },
+            });
+        }
     </script>
 </head>
 
@@ -181,7 +202,11 @@
                         <td>@item.CheckoutDate</td>
                         <td>@item.DueDate</td>
                         <td style="color:red; text-align:center">@item.OverDueDate</td>
-                        <td>@item.Note</td>
+                        <td>
+                            <textarea id="editNote" rows="4" cols="50" onchange="editNoteCheckIn()" data-duedate="@item.DueDate" data-id="@item.Copynumber">
+                                @item.Note
+                            </textarea>
+                        </td>
                     </tr>
                 }
             </tbody>
