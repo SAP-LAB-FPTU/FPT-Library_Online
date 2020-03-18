@@ -43,6 +43,7 @@
                 { "data": "intCollegeID" },
                 { "data": "intFacultyID" },
                 { "data": "strGrade" },
+                { "data": "currency" },
                 { "data": "strClass" },
                 { "data": "strTelephone" },
             ],
@@ -100,6 +101,7 @@
             <th>Ngày trả</th>
             <th>ĐKCB</th>
             <th>Giá ấn phẩm</th>
+            <th>Đơn vị tiền tệ</th>
             <th>Quá hạn(ngày)</th>
             <th>Phí phạt</th>
         </tr>
@@ -115,9 +117,10 @@
                 <td>@string.Format("{0:dd/MM/yyyy}", @item.CheckOutDate)</td>
                 <td>@string.Format("{0:dd/MM/yyyy}", @item.CheckInDate)</td>
                 <td>@item.CopyNumber</td>
-                <td>@item.Price @item.Currency</td>
+                <td>@item.Price.ToString("N0") </td>
+                <td>@item.Currency</td>
                 <td style="color:red">@item.OverdueDate</td>
-                <td style="color:red">@String.Format("{0:00.}", item.Penati)</td>
+                <td style="color:red">@item.Penati.ToString("N0") VND</td>
             </tr>
         }
     </tbody>

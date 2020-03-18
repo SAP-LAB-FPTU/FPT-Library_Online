@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Xml;
 using Libol.EntityResult;
 using Libol.Models;
 using Libol.SupportClass;
@@ -80,8 +83,26 @@ namespace Libol.Controllers
             List<SP_CIR_OVERDUELIST_GETINFOR_Result> list = db.Database.SqlQuery<SP_CIR_OVERDUELIST_GETINFOR_Result>("FPT_SP_CIR_OVERDUELIST_GETINFOR {0}, {1}, {2}",
                 new object[] { intUserID, strPatronIDs, whereCondition }).ToList();
             List<SP_CIR_OVERDUELIST_GETINFOR_Result> sP_CIR_OVERDUELISTs = new List<SP_CIR_OVERDUELIST_GETINFOR_Result>();
-            foreach(SP_CIR_OVERDUELIST_GETINFOR_Result item in list)
+            //get list ExchangeRate
+            Hashtable exchangeRates = getExchangeRateFromVietcombank();
+            foreach (SP_CIR_OVERDUELIST_GETINFOR_Result item in list)
             {
+                decimal raw_penati = item.Penati;
+                decimal raw_price = Convert.ToDecimal(item.Price);
+                string currency = item.Currency != null ? item.Currency.Trim() : item.Currency;
+                if (currency != "VND" && currency != null)
+                {
+                    raw_price *= Convert.ToDecimal(exchangeRates[currency]);
+                }
+                if (raw_price > 150000 && raw_penati > 150000)
+                {
+                    raw_penati = 150000;
+                }
+                else if (raw_price < raw_penati)
+                {
+                    raw_penati = raw_price;
+                }
+                item.Penati = raw_penati;
                 sP_CIR_OVERDUELISTs.Add(new SP_CIR_OVERDUELIST_GETINFOR_Result
                 {
                     CheckInDate = item.CheckInDate,
@@ -182,6 +203,28 @@ namespace Libol.Controllers
             if (String.Compare(txtSoNgayQuaHanDen, "", false) != 0)
                 str = str + " AND A.OverdueDate <= " + txtSoNgayQuaHanDen;
             return str;
+        }
+
+        //get list exchangerate
+        public Hashtable getExchangeRateFromVietcombank()
+        {
+            var url = "https://portal.vietcombank.com.vn/Usercontrols/TVPortal.TyGia/pXML.aspx";
+            string xmlStr;
+            using (var wc = new WebClient())
+            {
+                xmlStr = wc.DownloadString(url);
+            }
+            var xmlDoc = new XmlDocument();
+            xmlDoc.LoadXml(xmlStr);
+            XmlNodeList elemList = xmlDoc.GetElementsByTagName("Exrate");
+            Hashtable list = new Hashtable();
+            for (int i = 0; i < elemList.Count; i++)
+            {
+                string currencycode = elemList[i].Attributes["CurrencyCode"].Value;
+                decimal rate = Convert.ToDecimal(elemList[i].Attributes["Transfer"].Value);
+                list.Add(currencycode, rate);
+            }
+            return list;
         }
     }
 }
