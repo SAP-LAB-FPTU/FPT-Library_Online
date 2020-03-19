@@ -12,9 +12,6 @@ namespace Libol.Controllers
     {
         private LibolEntities db = new LibolEntities();
 
-
-
-
         // GET: Login
         public ActionResult Index()
         {
@@ -42,7 +39,6 @@ namespace Libol.Controllers
                 ViewData["Notification"] = "Tên đăng nhập/mật khẩu không đúng!";
                 return View();
             }
-
         }
 
         [HttpPost]
