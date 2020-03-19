@@ -350,10 +350,9 @@ namespace Libol.Controllers
 		//thay đổi ghi chú của ấn phẩm đang mượn
 		[HttpPost]
 		public JsonResult ChangeNote(string strCopyNumber, string strNote, string strDueDate)
-		{
-			strDueDate = strDueDate.Trim();
+		{ 
 			int lngTransactionID = db.CIR_LOAN.Where(a => a.CopyNumber == strCopyNumber).First().ID;
-			int update = db.SP_UPDATE_CURRENT_LOAN(lngTransactionID, strNote, strDueDate);
+			int update = db.SP_UPDATE_CURRENT_LOAN(lngTransactionID, strNote, "");
 			return Json(new
 			{
 				status = update
