@@ -227,6 +227,9 @@
                         'record_per_page': record_per_page, 'state': state
                     },
                     type: "POST",
+                    beforeSend: function () {
+                        $("#result").html("<h4>Loading...</h4>");
+                    },
                     success: function (result) {
                         $("#result").html(result)
                     },
@@ -253,6 +256,9 @@
                         'record_per_page': record_per_page, 'state': state
                     },
                     type: "POST",
+                    beforeSend: function () {
+                        $("#result").html("<h4>Loading...</h4>");
+                    },
                     success: function (result) {
                         $("#result").html(result)
                     },
